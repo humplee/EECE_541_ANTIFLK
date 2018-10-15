@@ -2,9 +2,9 @@ close all;
 clear all;
 
 
-filename='D:\Content\BIKE_HDR10_UHD_PR422_5994_branded_and_annotated.mov';
+filename='F:\HarmonicProject\HarmonicOriginal\BIKE_HDR10_UHD_PR422_5994_branded_and_annotated.mov';
 
-outVideo='D:\Content\test.yuv';
+outVideo='F:\HarmonicProject\HarmonicOriginal\test.yuv';
 
 v = VideoReader(filename),'RGB48';
 

@@ -63,12 +63,17 @@ else
 end
 
 if L2Lp
-    % Normalize The input by the Maximum authorized luminance
-    x = ClipImageAndWarn(x, 0, MaxLum, mfilename(), NoClipping) / MaxLum;    
+    % Normalize The input by the Maximum authorized luminance 
+    x(x<0.0000001)=0.0000001;
+    x(x>MaxLum)=MaxLum;
+    x=x./MaxLum;
+    
     % Apply the inverse EOTF on the input image
     y = ((c2 *(x.^m1) + c1)./(1 + c3 *( x.^m1))).^m2;
-    % Clamping
-    y = ClipImageAndWarn(y, 0, 1, mfilename(), NoClipping);    
+    % Clamping 
+    y(y<0.0000001)=0.0000001;
+    y(y>1)=1;
+    
 else
     % Remove values outside [0-1] for example caused by overflow in coding
 %     x = ClipImageAndWarn(x, 0, 1, mfilename(), NoClipping);    
