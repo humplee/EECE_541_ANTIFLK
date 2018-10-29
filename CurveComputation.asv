@@ -115,13 +115,7 @@ end
 % RETURNT THE FINAL CURVE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTI-FLICKERING
 %1. find the previous curve/distribution
-%2. compare the celling part
-%3A. stop any changes on celling part, since it contains the most
-%information
-%3B. decrease the changes on dencity area of pixels
-%3C. (L(F1)-L(H(F1))-(L(F2)-L(H(F2))<Visible
-%3D. LPF +...
-%Now let's try 3B first
+%2. compare the 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %flickering % Project 2

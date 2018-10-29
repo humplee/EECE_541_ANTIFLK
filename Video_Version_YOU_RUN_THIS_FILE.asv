@@ -4,15 +4,15 @@ clear all;
 
 filename='D:\Content\LG.ts';
 
-outVideo='D:\Content\testfour.yuv';
+outVideo='D:\Content\test3.yuv';
 
 v = VideoReader(filename),'RGB48';
-counter=0;
+counter=1;
 while (hasFrame(v))
     
     counter=counter+1;
     nextFrame = readFrame(v);
-    if counter <86
+    if counter <=86
         continue;
     end
     SDR=ToneMapping(nextFrame,v.BitsPerPixel);
