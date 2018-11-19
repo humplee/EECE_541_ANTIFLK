@@ -5,6 +5,7 @@ function H=CurveComputation(p,LdMax,LdMin,x,LldMax,LldMin)
 %x from min to max divided to 256 pcs
 tol=0.00000001;
 
+
 % display characteristics
 
 %luminance 
@@ -115,17 +116,33 @@ end
 % RETURNT THE FINAL CURVE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ANTI-FLICKERING
 %1. find the previous curve/distribution
-%2. compare the celling part
-%3A. stop any changes on celling part, since it contains the most
-%information
-%3B. decrease the changes on dencity area of pixels
-%3C. (L(F1)-L(H(F1))-(L(F2)-L(H(F2))<Visible
-%3D. LPF +...
-%Now let's try 3B first
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %flickering % Project 2
+global curvebuffer;
+if curvebuffer(128)==0
+    curvebuffer=dispPQ;
+end
+%1. calculate threthold value for previous curve
+%2. limit the buffer within the limitation from step 1;
+%3. save it;
+upperlimit=zeros(256);
+lowerlimit=zeros(256);
+for j=1:256
+    upperlimit(j)=curvebuffer(j)+1.8/256*j/256/2;
+    lowerlimit(j)=curvebuffer(j)-1.8/256*j/256/2;
+end
 
+for j=1:256
+    if dispPQ(j)>upperlimit(j)
+        dispPQ(j)=upperlimit(j);
+    end
+    if dispPQ(j)<lowerlimit(j)
+        dispPQ(j)=lowerlimit(j);
+    end
+end
+curvebuffer=dispPQ;
 
 H=dispPQ;
 end

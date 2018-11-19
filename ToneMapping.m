@@ -27,8 +27,8 @@ luminance=0.2627 * img(:,:,1) + 0.6780 * img(:,:,2) + 0.0593 * img(:,:,3);
 
 % set max allowed values
 minLum=minLum-0.001;
-maxLum=max(luminance(:))+10;
-
+%maxLum=max(luminance(:))+10;
+maxLum=1000;
 % make sure that all values of luminance is on the desired range
 luminance(luminance>maxLum)=maxLum;
 luminance(luminance<minLum)=minLum;

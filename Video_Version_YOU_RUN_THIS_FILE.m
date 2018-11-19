@@ -1,10 +1,11 @@
 close all; 
 clear all;
 
-
+global curvebuffer;
+curvebuffer=zeros(256);
 filename='D:\Content\LG.ts';
 
-outVideo='D:\Content\testfour.yuv';
+outVideo='D:\Content\testsecondround3.yuv';
 
 v = VideoReader(filename),'RGB48';
 counter=0;
